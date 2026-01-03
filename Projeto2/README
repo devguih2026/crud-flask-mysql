@@ -1,0 +1,5 @@
+Projeto simples que estava na lista de projetos que tenho para fazer em 2026
+
+nesse projeto eu fiz um projeto em Python e Flask que conecta com o banco de dados (MySQL) e faz as requisições via API (postman)
+
+A estrutura consiste em um CRUD simples que cria dados, lê, atualiza e deleta informações
