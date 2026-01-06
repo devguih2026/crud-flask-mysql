@@ -1,14 +1,27 @@
 from db import Conectar
 
-def Cadastrar(nome, email, senha):
+def Cadastrar(nome, email, senha_hash):
     conexao = Conectar()
     cursor = conexao.cursor()
     query = "INSERT INTO usuario (nome, email, senha) VALUES (%s, %s, %s)"
-    cursor.execute(query, (nome, email, senha))
+    cursor.execute(query, (nome, email, senha_hash))
     conexao.commit()
     cursor.close()
     conexao.close()
     return "Usuário cadastrado"
+
+def BuscarUsuarioPorEmail(email):
+    conexao = Conectar()
+    cursor = conexao.cursor(dictionary=True)
+
+    query = "SELECT * FROM usuario WHERE email = %s"
+    cursor.execute(query, (email,))
+    usuario = cursor.fetchone()
+
+    cursor.close()
+    conexao.close()
+    return usuario
+
 
 def MostrarUsuarios():
     conexao = Conectar()
