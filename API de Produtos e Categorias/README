@@ -1,0 +1,25 @@
+Projeto para praticar uso de Foreing key no MySQL com tabelas categorias e produtos
+
+CRUD padrão no Python e conexão com o banco junto com as rotas da API para usar no postman
+
+estrutura das tabelas:
+
+tabela "categoria":
+
+categoria_id int primary key auto_increment,
+nome varchar (255) unique not null,
+created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
+tabela "produtos":
+
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(255) NOT NULL,
+preco DECIMAL(10,2) NOT NULL,
+estoque INT NOT NULL DEFAULT 0,
+ativo BOOLEAN NOT NULL DEFAULT TRUE,
+categoria_id INT NOT NULL,
+created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+FOREIGN KEY (categoria_id) REFERENCES categorias(categoria_id)
+
