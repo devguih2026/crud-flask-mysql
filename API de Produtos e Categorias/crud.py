@@ -39,9 +39,15 @@ def MostrarProdutos():
     print("Query executada")
     return resultado
 
-def AtualizarProdutos():
+def AtualizarProdutos(preco, id):
     conexao = Conectar()
     cursor = conexao.cursor()
+    query = "UPDATE produtos SET preco = %s WHERE id = %s"
+    cursor.execute(query, (preco, id))
+    conexao.commit()
+    cursor.close()
+    conexao.close()
+    return "Atualização concluida"
     
 
 def ExcluirProdutos():

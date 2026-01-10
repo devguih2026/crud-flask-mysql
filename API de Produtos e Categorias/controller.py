@@ -28,3 +28,10 @@ def NovoProduto():
 def ListarTudo():
     chamar = MostrarProdutos()
     return jsonify(chamar)
+
+@projeto_bp.route("/americanas/produtos/<id>", methods=["PUT"])
+def NovoDado(id):
+    dados = request.json
+    preco = dados["preco"]
+    chamar = AtualizarProdutos(preco, id)
+    return jsonify(chamar)
