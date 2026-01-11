@@ -35,3 +35,8 @@ def NovoDado(id):
     preco = dados["preco"]
     chamar = AtualizarProdutos(preco, id)
     return jsonify(chamar)
+
+@projeto_bp.route("/americanas/produtos/<id>", methods=["DELETE"])
+def RemoverDados(id):
+    chamar = ExcluirProdutos(id)
+    return jsonify(chamar)

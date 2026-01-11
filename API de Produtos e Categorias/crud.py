@@ -49,7 +49,12 @@ def AtualizarProdutos(preco, id):
     conexao.close()
     return "Atualização concluida"
     
-
-def ExcluirProdutos():
+def ExcluirProdutos(id):
     conexao = Conectar()
-    cursor = conexao.cursor()
+    cursor = conexao.cursor(dictionary=True)
+    query = "DELETE FROM produtos WHERE id = %s"
+    cursor.execute(query, (id, ))
+    conexao.commit()
+    cursor.close()
+    conexao.close()
+    return "Produto excluído"
