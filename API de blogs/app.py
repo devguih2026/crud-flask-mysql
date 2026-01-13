@@ -1,5 +1,5 @@
 from flask import Flask
-from controller import projeto_bp
+from Controllers.controller_usuarios import projeto_bp
 
 app = Flask(__name__)
 
