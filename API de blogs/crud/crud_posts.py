@@ -46,3 +46,17 @@ def ApagarPosts(id):
     conexao.close()
     return "post removido"
 
+def ValidarAutor(id_posts, id_usuario):
+    conexao = Conectar()
+    cursor = conexao.cursor()
+    query = """
+        SELECT id_posts
+        FROM posts
+        WHERE id_posts = %s AND id_usuario = %s
+    """
+    cursor.execute(query, (id_posts, id_usuario))
+    resultado = cursor.fetchone()
+    cursor.close()
+    conexao.close()
+    return resultado
+
